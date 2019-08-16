@@ -76,7 +76,7 @@ export default function NavTabs() {
           <LinkTab label="Coding" href="/drafts" {...a11yProps(0)} />
           <LinkTab label="UI/UX" href="/trash" {...a11yProps(1)} />
           <LinkTab label="Data Analytics" href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Cyber Security" href="/spam" {...a11yProps(2)} />
+          <LinkTab label="Cyber Security" href="/spam" {...a11yProps(3)} />
 
         </Tabs>
       </AppBar>
