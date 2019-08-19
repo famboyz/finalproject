@@ -6,6 +6,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Drawer from '../drawer';
+import logo from './logo.jpg';
+
+
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -19,7 +26,7 @@ function TabPanel(props) {
       aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      <Box p={3}>{children}</Box>
+      <Box p={4}>{children}</Box>
     </Typography>
   );
 }
@@ -67,28 +74,50 @@ export default function NavTabs() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
+          
         <Tabs
           variant="fullWidth"
           value={value}
           onChange={handleChange}
           aria-label="nav tabs example"
+          
         >
+                      
+
           <LinkTab label="Coding" href="/drafts" {...a11yProps(0)} />
+          
           <LinkTab label="UI/UX" href="/trash" {...a11yProps(1)} />
           <LinkTab label="Data Analytics" href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Cyber Security" href="/spam" {...a11yProps(3)} />
+          <LinkTab label="Cyber Security" href="/cyber" {...a11yProps(3)} />
 
+          
+
+          <Drawer></Drawer> 
+
+          
         </Tabs>
+
+
       </AppBar>
+      
       <TabPanel value={value} index={0}>
-        Page One
+      <img src={logo} alt="Logo" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Page Two
+      <img src={logo} alt="Logo" />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Page Three
+      <img src={logo} alt="Logo" />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+      <img src={logo} alt="Logo" />
       </TabPanel>
     </div>
+
+
+
+
+
+
   );
 }
