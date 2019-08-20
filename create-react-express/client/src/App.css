@@ -8,7 +8,7 @@ html {
 }
 
 body {
- 
+  filter: grayscale(40%);
 }
 
 .App {
@@ -41,7 +41,7 @@ body {
 }
 .MuiCard-root {
   margin: 1.2rem;
-  border-radius: 1rem 0 1rem 0 !important;
+  border-radius: 1rem 1rem 1rem 1rem !important;
   border: 1px solid rgba( 0, 0, 0, 0.4);
   filter: sepia(20%);
 }
@@ -58,19 +58,20 @@ body {
 
 .MuiBox-root-121
 {
+  
   text-align: center;
 }
 
 .MuiBox-root-122
-{
-  
+{ 
   text-align: center;
 }
 .MuiBox-root-123
 {
-
   text-align: center;
 }
+
+
 
 
 
