@@ -1,10 +1,27 @@
 import React from "react";
-import Dialogue from "./../dialogue";
+import API from "./../../utils/API"
+import Input from "./../inputs/input";
 
-function signup(){
-    return (
-        <Dialogue></Dialogue>
-    )
+
+class Signup extends React.Component{
+state = {
+    user: null
+}
+handleSignUp =(user)=>{
+    console.log("handing signup")
+    API.signUp(user).then(route => 
+        window.location.replace(route))
 }
 
-export default signup
+
+    render(){
+        return (
+        <>
+        <Input handleSignUp={this.handleSignUp} type="signup"></Input>
+        </>
+    )
+    }
+    
+}
+
+export default Signup
