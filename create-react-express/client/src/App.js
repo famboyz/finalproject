@@ -3,9 +3,16 @@ import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/navtab";
 import API from "./utils/API.js";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import Landing from "./components/pages/landing.js";
-import SignUp from "./components/pages/signup.js"
+import SignUp from "./components/pages/signup.js";
+import Member from "./components/pages/member.js";
+import Login from "./components/pages/login.js";
 // import { spacing } from '@material-ui/system';
 
 // const theme = {
@@ -14,11 +21,21 @@ import SignUp from "./components/pages/signup.js"
 
 class App extends Component {
   state = {
-    user: ""
+    user: null,
+    auth: false
+  };
+
+  componentDidUpdate = () => {
+    if (this.state.user) {
+      this.setState({ auth: true });
+    }
   };
 
   signUp = user => {
-    API.signUp(user);
+    this.setState({ user: API.signUp(user) });
+  };
+  login = user => {
+    this.setState({ user: API.login(user) });
   };
 
   render() {
@@ -29,9 +46,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/login" component={SignUp} />
-          {/* <Route path="/contact" component={Contact} />
-          <Route component={NoMatch} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/member" component={Member} />
+            {/* <Route component={NoMatch} /> */}
           </Switch>
         </Router>
       </>
