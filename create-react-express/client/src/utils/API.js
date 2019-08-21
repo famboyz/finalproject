@@ -25,6 +25,11 @@ addProject: function (project){
     title: project.title,
     description: project.description
   })
+},
+getUser: function(){
+  return axios.get("/api/user").then(user=>{
+    return user.data
+  })
 }
 }
 
