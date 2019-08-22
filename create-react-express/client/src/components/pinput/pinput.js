@@ -31,73 +31,84 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function OutlinedTextFields() {
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  });
+export default class OutlinedTextFields extends React.Component {
+  state={
+    classes : useStyles
+  }
 
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+  handleSubmit = () =>{
+    this.props.projectSubmit({title:this.state.Title, description:this.state.Description, link: this.state.Link, email: this.props.email})
+  }
+
+  handleChange =event=>{
+    const {name, value} = event.target
+    this.setState({[name]:value})
+    console.log(this.state)
   };
 
+render(){
   return (
     <div>
-    <form className={classes.container} noValidate autoComplete="off">
+    <form className={this.state.classes.container} noValidate autoComplete="off">
 
 
     <TextField
         id="outlined-uncontrolled"
         label="Title"
+        name="Title"
         defaultValue=""
-        className={classes.textField}
+        className={this.state.classes.textField}
         margin="normal"
         variant="outlined"
+        onChange={this.handleChange}
       />
 
     <TextField
         id="outlined-multiline-static"
         label="Description"
+        name="Description"
         multiline
         rows="4"
         defaultValue=""
-        className={classes.textField}
+        className={this.state.classes.textField}
         margin="normal"
         variant="outlined"
+        onChange={this.handleChange}
       />
 
 <TextField
         id="outlined-multiline-static"
         label="Link"
+        name="Link"
         multiline
         rows="4"
         defaultValue=""
-        className={classes.textField}
+        className={this.state.classes.textField}
         margin="normal"
         variant="outlined"
+        onChange={this.handleChange}
       />
 
     </form>
     <input
         accept="image/*"
-        className={classes.input}
+        className={this.state.classes.input}
         id="contained-button-file"
         multiple
         type="file"
       />
       <label htmlFor="contained-button-file">
-        <Button variant="contained" component="span" className={classes.button}>
+        <Button variant="contained" component="span" className={this.state.classes.button}>
           Project Image
         </Button>
       </label>
 
-      <Button variant="contained" color="primary" className={classes.button}>
+      <Button variant="contained" color="primary" className={this.state.classes.button} onClick={this.handleSubmit}>
         Upload
       </Button>
     </div>
     
   );
+}
+  
 }

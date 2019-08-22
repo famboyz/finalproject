@@ -27,13 +27,22 @@ login: function (user){
 },
 addProject: function (project){
   return axios.post("/api/project/create", {
-    title: project.title,
-    description: project.description
-  })
+    project
+  }).then(data=> {return data}).catch(err=>{
+    console.log(err)
+    throw err})
 },
 getUser: function(){
   return axios.get("/api/user").then(user=>{
     return user.data
+  }).catch(err=>{
+    console.log(err)
+    throw err
+  })
+},
+getProject: function(user){
+  return axios.get("/api/project/"+user).then(project=>{
+    return project.data
   }).catch(err=>{
     console.log(err)
     throw err

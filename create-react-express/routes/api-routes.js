@@ -52,12 +52,21 @@ module.exports = function(app) {
   });
 
   app.post("/api/project/create", function(req,res){
+    let proj = req.body.project
     db.Project.create({
-      title: "dummy",
-      description: "dumb",
-      email: "dummy@gmail.com",
-    }).then(res=>{
-      console.log(res)
+      title: proj.title,
+      description: proj.description,
+      email: proj.email,
+      url: proj.link
+    }).then(data=>{
+      res.json(data.dataValues)
+    })
+
+  })
+
+  app.get("/api/project/:email", function(req,res){
+    db.Project.findAll({where: {email: req.params.email}}).then(data=>{
+      res.send(JSON.stringify(data))
     })
   })
 };

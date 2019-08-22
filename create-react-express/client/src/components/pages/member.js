@@ -12,14 +12,31 @@ const pStyle = {
 class member extends React.Component{
 
 state = {
-    user: {email: "Stranger"}
+    user: {email: "Stranger"},
+    projects: []
 }
 
-componentWillMount(){
+projectSubmit = proj =>{
+    console.log(proj)
+    API.addProject(proj).then(data=>{
+        console.log(data)
+    }).catch(err=>{throw err})
+}
+
+componentDidMount(){
     if(this.props.user){
         console.log(this.props.user)
         this.setState({user:this.props.user})
+        {API.getProject(this.props.user.email).then(projects => {
+            console.log(projects)
+            this.setState({projects: projects})
+        })
     }
+}
+}
+
+componentDidUpdate(){
+    console.log(this.state.projects)
 }
 
     render()
@@ -27,7 +44,7 @@ componentWillMount(){
             return (
                 <div   style={pStyle} >
                 <h1>Welcome {this.state.user.email}!</h1>
-                <Pinput></Pinput>
+                <Pinput projectSubmit = {this.projectSubmit} email ={this.state.user.email}></Pinput>
 
                 </div>
                 
