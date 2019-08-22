@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow: auto;
+}
+
+body {
+  filter: grayscale(40%);
+}
+
 .App {
   text-align: center;
 }
@@ -22,3 +35,43 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.MuiTabs-root {
+  background: rgba( 0, 0, 0, 0.6);
+}
+.MuiCard-root {
+  margin: 1.2rem;
+  border-radius: 1rem 1rem 1rem 1rem !important;
+  border: 1px solid rgba( 0, 0, 0, 0.4);
+  filter: sepia(20%);
+}
+
+.MuiPaper-root {
+  box-shadow: 2px 2px 7px rgba( 0, 0, 0, 0.7) !important;
+}
+
+.MuiBox-root-120
+{
+  text-align: center;
+
+}
+
+.MuiBox-root-121
+{
+  
+  text-align: center;
+}
+
+.MuiBox-root-122
+{ 
+  text-align: center;
+}
+.MuiBox-root-123
+{
+  text-align: center;
+}
+
+
+
+
+
