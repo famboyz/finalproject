@@ -22,7 +22,14 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
   },
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
 }));
+
 
 export default function OutlinedTextFields() {
   const classes = useStyles();
@@ -38,6 +45,7 @@ export default function OutlinedTextFields() {
   };
 
   return (
+    <div>
     <form className={classes.container} noValidate autoComplete="off">
 
 
@@ -50,7 +58,7 @@ export default function OutlinedTextFields() {
         variant="outlined"
       />
 
-<TextField
+    <TextField
         id="outlined-multiline-static"
         label="Description"
         multiline
@@ -61,8 +69,35 @@ export default function OutlinedTextFields() {
         variant="outlined"
       />
 
-    </form>
+<TextField
+        id="outlined-multiline-static"
+        label="Link"
+        multiline
+        rows="4"
+        defaultValue=""
+        className={classes.textField}
+        margin="normal"
+        variant="outlined"
+      />
 
+    </form>
+    <input
+        accept="image/*"
+        className={classes.input}
+        id="contained-button-file"
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file">
+        <Button variant="contained" component="span" className={classes.button}>
+          Project Image
+        </Button>
+      </label>
+
+      <Button variant="contained" color="primary" className={classes.button}>
+        Upload
+      </Button>
+    </div>
     
   );
 }
