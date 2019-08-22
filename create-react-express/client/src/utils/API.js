@@ -8,7 +8,10 @@ const API = {
       password: user.password
     }).then(function(data) {
       return data.data;
-    }).catch(err=>console.log(err));
+    }).catch(err=> {
+      console.log(err);
+      throw err;
+    });
 },
 login: function (user){
   return axios.post("/api/login", {
@@ -18,6 +21,7 @@ login: function (user){
     return data.data
   }).catch(function(err) {
       console.log(err);
+      throw err;
 })
 },
 addProject: function (project){

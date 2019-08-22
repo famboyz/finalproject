@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 var session = require("express-session");
+var logger = require("morgan");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
@@ -8,6 +9,7 @@ var passport = require("./config/passport");
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
 var app = express();
+app.use(logger("combined"));
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 // Define API routes here
 
 // Send every other request to the React app

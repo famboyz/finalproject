@@ -2,16 +2,18 @@ import React from "react";
 import API from "./../../utils/API";
 import Input from "./../inputs/input";
 
+
 class Login extends React.Component {
   state = {
     user: null
   };
   handleLogin = user => {
-    console.log("handing login");
-    API.login(user).then(route => {
-      window.location.replace("/member");
-    });
+      this.props.loginHandler(user).then(user => {
+        window.location.replace("/member");
+      })
   };
+
+  
 
   render() {
     return (

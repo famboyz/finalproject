@@ -25,18 +25,18 @@ class App extends Component {
     auth: false
   };
 
-  componentDidUpdate = () => {
-    if (this.state.user) {
-      this.setState({ auth: true });
-    }
+  // signUp = user => {
+  //   this.setState({ user: API.signUp(user) });
+  // };
+  login = user => {
+    return API.login(user).then(loggedInUser => {
+      console.log(loggedInUser)
+      this.setState({ user: loggedInUser });
+      return loggedInUser;
+    });
   };
 
-  signUp = user => {
-    this.setState({ user: API.signUp(user) });
-  };
-  login = user => {
-    this.setState({ user: API.login(user) });
-  };
+  
 
   render() {
     return (
@@ -46,8 +46,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/member" component={Member} />
+            <Route exact path="/login" component={props => <Login {...props} loginHandler={this.login} />} />
+            <Route exact path="/member" component={props => <Member {...props} user={this.state.user} />} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
         </Router>

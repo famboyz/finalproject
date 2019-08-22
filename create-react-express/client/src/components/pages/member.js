@@ -19,7 +19,11 @@ state = {
 
 
 componentDidMount = ()=>{
-  API.getUser().then(user=>this.setState({user:user}))
+  API.getUser().then(user=>{
+      this.setState({user:user})
+      console.log("ON MEMBER PAGE")
+    console.log(this.state.user)
+    })
 }
     render()
     {
