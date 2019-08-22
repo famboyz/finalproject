@@ -22,18 +22,39 @@ import Login from "./components/pages/login.js";
 class App extends Component {
   state = {
     user: null,
-    auth: false
+    auth: false,
   };
 
-  // signUp = user => {
-  //   this.setState({ user: API.signUp(user) });
-  // };
+  componentDidMount = ()=>{
+    API.getUser().then(user=>{
+        this.setState({user:user})
+      console.log(this.state.user)
+      }).catch(err=>{
+        console.log(err)
+      })
+  }
+
   login = user => {
     return API.login(user).then(loggedInUser => {
       console.log(loggedInUser)
       this.setState({ user: loggedInUser });
       return loggedInUser;
+    }).catch(err=>{
+      console.log(err);
+      throw err
     });
+  };
+
+  SignUp = user => {
+    return API.signUp(user).then(loggedInUser => {
+      alert(loggedInUser)
+      this.setState({ user: loggedInUser });
+      return loggedInUser;
+    }).catch(err=>{
+      console.log(err)
+      throw err
+    })
+    ;
   };
 
   
@@ -45,8 +66,8 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/login" component={props => <Login {...props} loginHandler={this.login} />} />
+            <Route exact path="/signup" component={props => <SignUp {...props} handleSignUp={this.SignUp} user={this.state.user} />} />
+            <Route exact path="/login" component={props => <Login {...props} loginHandler={this.login} user={this.state.user} />} />
             <Route exact path="/member" component={props => <Member {...props} user={this.state.user} />} />
             {/* <Route component={NoMatch} /> */}
           </Switch>

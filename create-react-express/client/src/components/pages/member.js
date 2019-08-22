@@ -13,23 +13,21 @@ const pStyle = {
 class member extends React.Component{
 
 state = {
-    user: ""
+    user: {email: "Stranger"}
 }
 
-
-
-componentDidMount = ()=>{
-  API.getUser().then(user=>{
-      this.setState({user:user})
-      console.log("ON MEMBER PAGE")
-    console.log(this.state.user)
-    })
+componentWillMount(){
+    if(this.props.user){
+        console.log(this.props.user)
+        this.setState({user:this.props.user})
+    }
 }
+
     render()
     {
             return (
                 <div   style={pStyle} >
-                <h1>Welcome {this.state.user.email}</h1>
+                <h1>Welcome {this.state.user.email}!</h1>
                 <Pinput></Pinput>
                 <Pbutton></Pbutton>
 

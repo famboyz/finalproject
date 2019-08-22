@@ -25,8 +25,7 @@ module.exports = function(app) {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
       console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
+      res.status(422).json(err.errors[0].message);
     });
   });
 
@@ -40,7 +39,7 @@ module.exports = function(app) {
   app.get("/api/user", function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({user:"not working!"});
+      res.status(422).json("User Not Logged In!");
     }
     else {
       // Otherwise send back the user's email and id
