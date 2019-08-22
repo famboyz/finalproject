@@ -7,10 +7,22 @@ class Signup extends React.Component{
 state = {
     user: null
 }
+
+componentDidMount=()=>{
+    if(this.props.user){
+        this.setState({user:this.props.user})
+        window.location.replace("/member")
+    }
+}
+
 handleSignUp =(user)=>{
     console.log("handing signup")
-    API.signUp(user).then(route => 
-        window.location.replace(route))
+    this.props.handleSignUp(user).then(result=>{
+        window.location.replace("/member")
+    }).catch(err=>{
+        alert(`SIGNUP ERROR - ${err}`)
+        window.location.replace('/signup')
+    })
 }
 
 

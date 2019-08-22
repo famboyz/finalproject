@@ -7,8 +7,12 @@ const API = {
       email: user.email,
       password: user.password
     }).then(function(data) {
+      console.log(data)
       return data.data;
-    }).catch(err=>console.log(err));
+    }).catch(err=> {
+      console.log(err);
+      throw err;
+    });
 },
 login: function (user){
   return axios.post("/api/login", {
@@ -18,6 +22,7 @@ login: function (user){
     return data.data
   }).catch(function(err) {
       console.log(err);
+      throw err;
 })
 },
 addProject: function (project){
@@ -29,6 +34,9 @@ addProject: function (project){
 getUser: function(){
   return axios.get("/api/user").then(user=>{
     return user.data
+  }).catch(err=>{
+    console.log(err)
+    throw err
   })
 }
 }
