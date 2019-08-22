@@ -2,16 +2,6 @@ import React from "react";
 import API from "./../../utils/API"
 import Input from "./../inputs/input";
 
-<<<<<<< HEAD
-function signup(){
-   return (
-       <>
-     <Dialogue></Dialogue>
-       </>
-   )
-}
-export default signup
-=======
 
 class Signup extends React.Component{
 state = {
@@ -35,4 +25,3 @@ handleSignUp =(user)=>{
 }
 
 export default Signup
->>>>>>> origin/master
