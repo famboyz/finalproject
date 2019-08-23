@@ -1,24 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import Build from "@material-ui/icons/Build";
-import Dialogue from "./../dialogue";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./drawer.css";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 
 import SvgIcon from "@material-ui/core/SvgIcon";
-
-import API from "./../../utils/API";
 
 const useStyles = makeStyles({
   list: {

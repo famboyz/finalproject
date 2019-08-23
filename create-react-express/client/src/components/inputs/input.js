@@ -1,7 +1,5 @@
 import React from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -92,7 +90,7 @@ class Inputs extends React.Component {
         className={this.state.classes.button}
         onClick = {(e)=> this.handleSubmit(e)}
       >
-        {this.props.type=="login"? "Log In":"Sign Up"}
+        {this.props.type==="login"? "Log In":"Sign Up"}
       </Button>
     </div>
       )

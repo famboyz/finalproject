@@ -69,4 +69,11 @@ module.exports = function(app) {
       res.send(JSON.stringify(data))
     })
   })
+
+  app.get("/api/projects", function(req, res){
+    db.Project.findAll({}).then(data=>{
+      console.log("GETTING ALL PROJECTS")
+      console.log(data)
+      res.send(JSON.stringify(data))})
+  })
 };
