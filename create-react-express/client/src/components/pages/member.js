@@ -29,7 +29,6 @@ componentWillMount(){
                 <div   style={pStyle} >
                 <h1>Welcome {this.state.user.email}!</h1>
                 <Pinput></Pinput>
-                <Pbutton></Pbutton>
 
                 </div>
                 

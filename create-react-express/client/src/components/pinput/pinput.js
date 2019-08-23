@@ -1,9 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 
 
 
@@ -22,7 +26,14 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
   },
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
 }));
+
 
 export default function OutlinedTextFields() {
   const classes = useStyles();
@@ -37,7 +48,22 @@ export default function OutlinedTextFields() {
     setValues({ ...values, [name]: event.target.value });
   };
 
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+
+function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
   return (
+    <React.Fragment>
+
+
     <form className={classes.container} noValidate autoComplete="off">
 
 
@@ -61,8 +87,55 @@ export default function OutlinedTextFields() {
         variant="outlined"
       />
 
+
+<TextField
+        id="outlined-uncontrolled"
+        label="URL"
+        defaultValue=""
+        className={classes.textField}
+        margin="normal"
+        variant="outlined"
+      />
     </form>
 
-    
+    <div>
+
+   
+    <input
+      accept="image/*"
+      className={classes.input}
+      id="contained-button-file"
+      multiple
+      type="file"
+    />
+   
+
+   
+  </div>
+
+
+  <div>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+Select Category      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Coding</MenuItem>
+        <MenuItem onClick={handleClose}>UI/UX</MenuItem>
+        <MenuItem onClick={handleClose}>Data Analytics</MenuItem>
+        <MenuItem onClick={handleClose}>Cyber Security</MenuItem>
+
+      </Menu>
+    </div>
+
+    <Button variant="contained" color="primary" className={classes.button}>
+      Upload Project
+    </Button>
+    </React.Fragment>
+
   );
 }
