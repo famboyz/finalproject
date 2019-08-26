@@ -63,12 +63,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(4);
 
   function handleChange(event, newValue) {
     setValue(newValue);
+    props.param(newValue)
   }
 
   return (
@@ -83,14 +84,13 @@ export default function NavTabs() {
           
         >
                       
-
-          <LinkTab label="Coding" href="/drafts" {...a11yProps(0)} />
+                      
+          <LinkTab label="Coding" {...a11yProps(0)} />
           
-          <LinkTab label="UI/UX" href="/trash" {...a11yProps(1)} />
-          <LinkTab label="Data Analytics" href="/spam" {...a11yProps(2)} />
-          <LinkTab label="Cyber Security" href="/cyber" {...a11yProps(3)} />
-
-          
+          <LinkTab label="UI-UX" {...a11yProps(1)} />
+          <LinkTab label="Data Analytics" {...a11yProps(2)} />
+          <LinkTab label="Cyber Security" {...a11yProps(3)} />
+          <LinkTab label="All" {...a11yProps(4)} />
 
           <Drawer></Drawer> 
 
@@ -99,19 +99,6 @@ export default function NavTabs() {
 
 
       </AppBar>
-      
-      <TabPanel value={value} index={0}>
-      <img src={logo} alt="Logo" />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      <img src={logo} alt="Logo" />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-      <img src={logo} alt="Logo" />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-      <img src={logo} alt="Logo" />
-      </TabPanel>
     </div>
 
 

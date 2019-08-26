@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/navtab";
 import API from "./utils/API.js";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 import Landing from "./components/pages/landing.js";
 import SignUp from "./components/pages/signup.js";
 import Member from "./components/pages/member.js";
 import Login from "./components/pages/login.js";
+import logo from "./components/navtab/logo.jpg"
 // import { spacing } from '@material-ui/system';
 
 // const theme = {
@@ -23,6 +22,9 @@ class App extends Component {
   state = {
     user: null,
     auth: false,
+    projects: [],
+    searchParams:["Coding", "UX-UI", "Data Analytics", "Cyber Security", "All"],
+    search: 4
   };
 
   componentDidMount = ()=>{
@@ -32,6 +34,22 @@ class App extends Component {
       }).catch(err=>{
         console.log(err)
       })
+
+      API.getProjects().then(projects=>{
+        this.setState({projects:projects})
+      }).catch(err=>{
+        console.log(err)
+      })
+  }
+
+  changeSearchParam = (param) =>{
+    this.setState({search:param})
+    console.log(param)
+      API.getProjectCat(this.state.searchParams[this.state.search]).then(projects=>{
+      this.setState({projects:projects})
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 
   login = user => {
@@ -63,9 +81,12 @@ class App extends Component {
     return (
       <>
         <Router>
-          <Nav />
+          <Nav param={this.changeSearchParam}/>
+          <div>
+          <img src={logo} alt="Logo" />
+          </div>
           <Switch>
-            <Route exact path="/" component={Landing} />
+            <Route exact path="/" component={props=> <Landing {...props} projects={this.state.projects}/>} />
             <Route exact path="/signup" component={props => <SignUp {...props} handleSignUp={this.SignUp} user={this.state.user} />} />
             <Route exact path="/login" component={props => <Login {...props} loginHandler={this.login} user={this.state.user} />} />
             <Route exact path="/member" component={props => <Member {...props} user={this.state.user} />} />
