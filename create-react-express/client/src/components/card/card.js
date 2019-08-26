@@ -100,12 +100,12 @@ export default function RecipeReviewCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Typography paragraph>Created by:</Typography>
           <Typography paragraph>
-
+          {props.info.email}
           </Typography>
           <Typography paragraph>
- 
+          Category : {props.info.category}
           </Typography>
           <Typography paragraph>
 

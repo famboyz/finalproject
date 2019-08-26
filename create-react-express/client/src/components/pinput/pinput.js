@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import InputLabel from '@material-ui/core/InputLabel';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import Input from '@material-ui/core/Input';
 
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +37,7 @@ export default class OutlinedTextFields extends React.Component {
   }
 
   handleSubmit = () =>{
-    this.props.projectSubmit({title:this.state.Title, description:this.state.Description, link: this.state.Link, email: this.props.email})
+    this.props.projectSubmit({title:this.state.Title, description:this.state.Description, link: this.state.Link, email: this.props.email, category: this.state.cat})
   }
 
   handleChange =event=>{
@@ -60,6 +62,18 @@ render(){
         variant="outlined"
         onChange={this.handleChange}
       />
+      <InputLabel htmlFor="cat-native-helper">Category</InputLabel>
+        <NativeSelect
+          value={this.state.cat}
+          onChange={this.handleChange}
+          input={<Input name="cat" id="cat-native-helper" />}
+        >
+          <option value="" />
+          <option value={"Coding"}>Coding</option>
+          <option value={"UX-UI"}>UX-UI</option>
+          <option value={"Data Analytics"}>Data Analytics</option>
+          <option value={"Cyber Security"}>Cyber Security</option>
+        </NativeSelect>
 
     <TextField
         id="outlined-multiline-static"
@@ -79,14 +93,14 @@ render(){
         label="Link"
         name="Link"
         multiline
-        rows="4"
+        rows="2"
         defaultValue=""
         className={this.state.classes.textField}
         margin="normal"
         variant="outlined"
         onChange={this.handleChange}
       />
-
+<h6>Please input url without https:// in front</h6>
     </form>
     <input
         accept="image/*"

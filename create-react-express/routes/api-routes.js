@@ -57,7 +57,8 @@ module.exports = function(app) {
       title: proj.title,
       description: proj.description,
       email: proj.email,
-      url: proj.link
+      url: proj.link,
+      category: proj.category
     }).then(data=>{
       res.json(data.dataValues)
     })
@@ -75,5 +76,18 @@ module.exports = function(app) {
       console.log("GETTING ALL PROJECTS")
       console.log(data)
       res.send(JSON.stringify(data))})
+  })
+
+  app.get("/api/projects/:category", function(req,res){
+    if (req.params.category === "All"){
+      db.Project.findAll({}).then(data=>{
+        console.log("GETTING ALL PROJECTS")
+        console.log(data)
+        res.send(JSON.stringify(data))})
+    }else{
+      db.Project.findAll({where:{category:req.params.category}}).then(data=>{
+        res.send(JSON.stringify(data))
+      })
+    }
   })
 };

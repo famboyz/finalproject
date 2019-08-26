@@ -55,6 +55,14 @@ getProjects: function(){
     console.log(err)
     throw err
   })
+},
+getProjectCat: function(category){
+  return axios.get("/api/projects/"+category).then(projects => {
+    return projects.data
+  }).catch(err=>{
+    console.log(err)
+    throw err
+  })
 }
 }
 
