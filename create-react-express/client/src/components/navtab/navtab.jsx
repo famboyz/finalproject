@@ -84,13 +84,13 @@ export default function NavTabs(props) {
           
         >
                       
-                      
+                      <LinkTab label="All" {...a11yProps(4)} />
+      
           <LinkTab label="Coding" {...a11yProps(0)} />
           
           <LinkTab label="UI-UX" {...a11yProps(1)} />
           <LinkTab label="Data Analytics" {...a11yProps(2)} />
           <LinkTab label="Cyber Security" {...a11yProps(3)} />
-          <LinkTab label="All" {...a11yProps(4)} />
 
           <Drawer></Drawer> 
 

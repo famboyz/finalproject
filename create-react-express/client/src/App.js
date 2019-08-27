@@ -18,12 +18,13 @@ import logo from "./components/navtab/logo.jpg"
 //   spacing: [10,20,30]
 // }
 
+
 class App extends Component {
   state = {
     user: null,
     auth: false,
     projects: [],
-    searchParams:["Coding", "UX-UI", "Data Analytics", "Cyber Security", "All"],
+    searchParams:["All", "Coding", "UX-UI", "Data Analytics", "Cyber Security" ],
     search: 4
   };
 
@@ -65,7 +66,7 @@ class App extends Component {
 
   SignUp = user => {
     return API.signUp(user).then(loggedInUser => {
-      alert(loggedInUser)
+      // alert(loggedInUser)
       this.setState({ user: loggedInUser });
       return loggedInUser;
     }).catch(err=>{
@@ -83,7 +84,7 @@ class App extends Component {
         <Router>
           <Nav param={this.changeSearchParam}/>
           <div>
-          <img src={logo} alt="Logo" />
+          <img   src={logo} alt="Logo" />
           </div>
           <Switch>
             <Route exact path="/" component={props=> <Landing {...props} projects={this.state.projects}/>} />

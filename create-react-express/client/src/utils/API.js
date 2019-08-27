@@ -28,8 +28,11 @@ login: function (user){
 addProject: function (project){
   return axios.post("/api/project/create", {
     project
-  }).then(data=> {return data}).catch(err=>{
-    console.log(err)
+  }).then(data=> {return data}
+    
+    ).catch(err=>{
+    console.log(err);
+   
     throw err})
 },
 getUser: function(){

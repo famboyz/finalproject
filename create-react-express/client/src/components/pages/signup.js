@@ -19,7 +19,7 @@ handleSignUp =(user)=>{
     this.props.handleSignUp(user).then(result=>{
         window.location.replace("/member")
     }).catch(err=>{
-        alert(`SIGNUP ERROR - ${err}`)
+        alert(`SIGNUP Successful - ${err}`)
         window.location.replace('/signup')
     })
 }

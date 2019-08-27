@@ -31,6 +31,34 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+var divStyle = {
+  position: 'absolute', left: '50%', top: '50%',
+  transform: 'translate(-50%, -50%)'
+};
+
+var divTitle = {
+  position: 'absolute', left: '50%', top: '40%',
+  transform: 'translate(-50%, -50%)'
+};
+var divCat = {
+  position: 'absolute', left: '50%', top: '75%',
+  transform: 'translate(-50%, -50%)'
+};
+var divDesc = {
+  position: 'absolute', left: '50%', top: '50%',
+  transform: 'translate(-50%, -50%)'
+};
+
+var divLink = {
+  position: 'absolute', left: '44%', top: '60%',
+  // transform: 'translate(-50%, -50%)'
+};
+
+var divButton = {
+  position: 'absolute', left: '50%', top: '80%',
+  transform: 'translate(-50%, -50%)'
+};
+
 export default class OutlinedTextFields extends React.Component {
   state={
     classes : useStyles
@@ -48,11 +76,11 @@ export default class OutlinedTextFields extends React.Component {
 
 render(){
   return (
-    <div>
+    <div >
     <form className={this.state.classes.container} noValidate autoComplete="off">
 
-
-    <TextField
+<div >
+    <TextField style={divTitle}
         id="outlined-uncontrolled"
         label="Title"
         name="Title"
@@ -62,8 +90,8 @@ render(){
         variant="outlined"
         onChange={this.handleChange}
       />
-      <InputLabel htmlFor="cat-native-helper">Category</InputLabel>
-        <NativeSelect
+      <InputLabel htmlFor="cat-native-helper" style={divCat}></InputLabel>
+        <NativeSelect style={divCat}
           value={this.state.cat}
           onChange={this.handleChange}
           input={<Input name="cat" id="cat-native-helper" />}
@@ -75,7 +103,7 @@ render(){
           <option value={"Cyber Security"}>Cyber Security</option>
         </NativeSelect>
 
-    <TextField
+    <TextField style={divDesc}
         id="outlined-multiline-static"
         label="Description"
         name="Description"
@@ -88,7 +116,7 @@ render(){
         onChange={this.handleChange}
       />
 
-<TextField
+<TextField style={divLink}
         id="outlined-multiline-static"
         label="Link"
         name="Link"
@@ -100,24 +128,15 @@ render(){
         variant="outlined"
         onChange={this.handleChange}
       />
-<h6>Please input url without https:// in front</h6>
+</div>
     </form>
-    <input
-        accept="image/*"
-        className={this.state.classes.input}
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" component="span" className={this.state.classes.button}>
-          Project Image
-        </Button>
-      </label>
 
-      <Button variant="contained" color="primary" className={this.state.classes.button} onClick={this.handleSubmit}>
+  
+
+      <Button style={divButton} variant="contained" color="primary" className={this.state.classes.button} onClick={this.handleSubmit}>
         Upload
       </Button>
+      
     </div>
     
   );

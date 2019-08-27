@@ -4,8 +4,8 @@ import Pinput from "./../pinput/pinput";
 
 const pStyle = {
     position: "absolute",
-    left: "59%",
-    top: "59%",
+    left: "50%",
+    top: "30%",
     transform: "translate(-50%, -50%)"
   };
 
@@ -37,8 +37,8 @@ componentDidMount(){
     render()
     {
             return (
-                <div   style={pStyle} >
-                <h1>Welcome {this.state.user.email}!</h1>
+                <div    >
+                <h1 style={pStyle}>Welcome {this.state.user.email}!</h1>
                 <Pinput projectSubmit = {this.projectSubmit} email ={this.state.user.email}></Pinput>
                 </div>   
             )
